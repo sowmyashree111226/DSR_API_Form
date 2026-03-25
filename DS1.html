@@ -35,47 +35,40 @@
 document.getElementById("privacyForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const formData = {
-    ticket_type: ["access"],
-    user_type: "customer",
-    email: document.getElementById("email").value,
-    qid: "NA",
-    account_no: document.getElementById("account_no").value,
-    first_name: document.getElementById("first_name").value,
-    last_name: document.getElementById("last_name").value,
-    dob: "",
-    phone: "",
-    requestSubject: document.getElementById("subject").value,
-    requestDetails: document.getElementById("details").value,
-    attachments: [],
-    additionalCustomCheckbox: false
-  };
+const formData = {
+  ticket_type: ["ACCESS"], // try uppercase
+  user_type: "customer",
+  email: document.getElementById("email").value,
+  qid: "NA",
+  account_no: document.getElementById("account_no").value,
+  first_name: document.getElementById("first_name").value,
+  last_name: document.getElementById("last_name").value,
+  dob: null,
+  phone: "",
+  request_subject: document.getElementById("subject").value,
+  request_details: document.getElementById("details").value,
+  attachments: [],
+  additionalCustomCheckbox: false
+};
 
-  try {
-    const response = await fetch("https://privacy-central.securiti.ai/integration/v1/request-submission", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-          "X-TIDENT" : "ac148030-769c-49c3-95d9-312b84bb140d",
+fetch("https://privacy-central.securiti.ai/integration/v1/request-submission", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+"X-TIDENT" : "ac148030-769c-49c3-95d9-312b84bb140d",
                   "X-API-KEY" : "Z6d64bidM5ENe8FOq6kdPEvTLpv2QxHlGnov93i5",
                   "X-API-SECRET": "16O8w0aNxEr2TzqBybKEJ4Z218mTEwyfm4YicrZk"
-      },
-      body: JSON.stringify({
-        "tenant_form_uuid": "a5093321-6ff4-41a5-aaa5-ca14151aa892",
-        "form_data": JSON.stringify(formData),
-        "enforce_email_verification": false
-      })
-    });
-
-    const result = await response.json();
-    console.log(result);
-    alert("Request submitted successfully!");
-
-  } catch (error) {
-    console.error(error);
-    alert("Error submitting request");
-  }
-});
+  },
+  body: JSON.stringify({
+    form_data: JSON.stringify(formData)
+  })
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Response:", data);
+  alert(JSON.stringify(data));
+})
+.catch(err => console.error(err));
 </script>
 
 </body>
