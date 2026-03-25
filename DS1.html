@@ -61,7 +61,9 @@ document.getElementById("privacyForm").addEventListener("submit", async function
                   "X-API-SECRET": "16O8w0aNxEr2TzqBybKEJ4Z218mTEwyfm4YicrZk"
       },
       body: JSON.stringify({
-        form_data: JSON.stringify(formData)
+        "tenant_form_uuid": "a5093321-6ff4-41a5-aaa5-ca14151aa892",
+        "form_data": JSON.stringify(formData),
+        "enforce_email_verification": false
       })
     });
 
