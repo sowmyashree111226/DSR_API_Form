@@ -1,0 +1,22 @@
+<form id="dsarForm">
+    <div class="form-group">
+        <label>Request Type:</label>
+        <input type="checkbox" name="ticket_type" value="access"> Access
+        <input type="checkbox" name="ticket_type" value="erasure"> Erasure
+        </div>
+
+    <input type="text" name="user_type" value="customer" hidden>
+    <input type="email" name="email" required>
+    <input type="text" name="qid">
+    <input type="text" name="account_no">
+    <input type="text" name="first_name">
+    <input type="text" name="last_name">
+    <input type="date" name="dob">
+    <input type="text" name="phone">
+    <input type="text" name="requestSubject">
+    <textarea name="requestDetails"></textarea>
+    
+    <input type="checkbox" name="additionalCustomCheckbox"> I agree...
+
+    <button type="submit">Submit</button>
+</form>
