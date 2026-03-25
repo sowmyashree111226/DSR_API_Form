@@ -60,15 +60,15 @@ fetch("https://privacy-central.securiti.ai/integration/v1/request-submission", {
                   "X-API-SECRET": "16O8w0aNxEr2TzqBybKEJ4Z218mTEwyfm4YicrZk"
   },
   body: JSON.stringify({
-        tenant_form_uuid: "a5093321-6ff4-41a5-aaa5-ca14151aa892", 
-        form_data: JSON.stringify(formData),
-        enforce_email_verification: false
+       
+  tenant_form_uuid: "a5093321-6ff4-41a5-aaa5-ca14151aa892",
+  form_data: "{\"ticket_type\":[\"access\"],\"user_type\":\"customer\", ... }",
+  enforce_email_verification: false
+
       })
     });
 
-    const result = await response.json();
-    console.log("API Response:", result);
-
+ 
     if(result.success){
       alert("Request submitted successfully");
     } else {
